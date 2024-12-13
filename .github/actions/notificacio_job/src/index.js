@@ -22,8 +22,8 @@ async function run() {
         const transporter = servicioEmail.createTransport({
             service: "gmail",            
             auth: {
+                type: "OAuth2",
                 user: remitent_email,
-                pass: remitent_password,
                 clientId: client_id,
                 clientSecret: client_secret,    
                 refreshToken: refresh_token,
