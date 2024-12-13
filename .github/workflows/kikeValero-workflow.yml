@@ -92,35 +92,35 @@ jobs:
               message: "Resultat test badge"
               push: true    
     
-    # deploy_job:
-    #     needs: cypress_job
-    #     runs-on: ubuntu-latest
-    #     continue-on-error: true
+    deploy_job:
+        needs: cypress_job
+        runs-on: ubuntu-latest
+        continue-on-error: true
 
-    #     steps:
-    #     # Step 1
-    #     - name: Checkout code
-    #       uses: actions/checkout@v4
+        steps:
+        # Step 1
+        - name: Checkout code
+          uses: actions/checkout@v4
 
-    #     # Step 2
-    #     - name: Instal·lant dependencies
-    #       run: npm install --legacy-peer-deps
+        # # Step 2
+        # - name: Instal·lant dependencies
+        #   run: npm install --legacy-peer-deps
 
-    #     # Step 3
-    #     - name: Construint el projecte
-    #       run: npm run build
+        # # Step 3
+        # - name: Construint el projecte
+        #   run: npm run build
 
-    #     - name: Instal·lar Vercel CLI 
-    #       run: npm install -g vercel@25.1.0
+        # - name: Instal·lar Vercel CLI 
+        #   run: npm install -g vercel@25.1.0
       
-    #     # Step 4
-    #     - name: Desplegar en Vercel
-    #       uses: amondnet/vercel-action@v25
-    #       with:
-    #         vercel-token: ${{ secrets.VERCEL_TOKEN }} 
-    #         # github-token: ${{ secrets.GH_TOKEN }}            
-    #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
-    #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
+        # Step 4
+        - name: Desplegar en Vercel
+          uses: amondnet/vercel-action@v25
+          with:
+            vercel-token: ${{ secrets.VERCEL_TOKEN }} 
+            vercel-args: "--prod"  
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
            
 
     # Notification_job:
