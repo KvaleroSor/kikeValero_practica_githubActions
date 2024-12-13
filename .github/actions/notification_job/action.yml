@@ -1,0 +1,21 @@
+name: notificacion_job
+description: "Notificar el resultat del test via email"
+inputs:
+  destinatari_email: 
+    descrtiption: "Email del destinatari del correu"
+    required: true
+  linter_job:
+    description: "Resultat linter job"
+    required: true
+  cypress_job: 
+    description: "Resultat del cypress job"
+    required: true
+  badge_job:
+    description: "Resultat del badge_job"
+    required: true
+  deploy_job:
+    description: "Resultat del deploy_job"
+    required: true
+runs:
+  using: "node12"
+  main: "index.js"

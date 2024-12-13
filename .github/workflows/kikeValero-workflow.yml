@@ -101,19 +101,8 @@ jobs:
         # Step 1
         - name: Checkout code
           uses: actions/checkout@v4
-
-        # # Step 2
-        # - name: Instal·lant dependencies
-        #   run: npm install --legacy-peer-deps
-
-        # # Step 3
-        # - name: Construint el projecte
-        #   run: npm run build
-
-        # - name: Instal·lar Vercel CLI 
-        #   run: npm install -g vercel@25.1.0
       
-        # Step 4
+        # Step 2
         - name: Desplegar en Vercel
           uses: amondnet/vercel-action@v25
           with:
@@ -123,27 +112,27 @@ jobs:
             vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
            
 
-    # Notification_job:
-    #   needs: [linter_job, cypress_job, add_badge_job, deploy_job]
-    #   runs-on: ubuntu-latest
-    #   if: always()
-    #   continue-on-error: true
+    Notification_job:
+      needs: [linter_job, cypress_job, add_badge_job, deploy_job]
+      runs-on: ubuntu-latest
+      if: always()
+      continue-on-error: true
       
-    #   steps:
+      steps:
 
-    #     # Step 1
-    #     - name: Checkout code
-    #       uses: actions/checkout@v4
+        # Step 1
+        - name: Checkout code
+          uses: actions/checkout@v4
 
-    #     # Step 2
-    #     - name: Enviar email notificant
-    #       uses: ./.github/actions/notificacio_job
-    #       with:
-    #         destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
-    #         linter_job: ${{ needs.linter_job.result }}
-    #         cypress_job: ${{ needs.cypress_job.result }}
-    #         badge_job: ${{ needs.add_badge_job.result }}
-    #         deploy_job: ${{ needs.deploy_job.result }}
+        # Step 2
+        - name: Enviar email notificant
+          uses: ./.github/actions/notificacio_job
+          with:
+            destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
+            linter_job: ${{ needs.linter_job.result }}
+            cypress_job: ${{ needs.cypress_job.result }}
+            badge_job: ${{ needs.add_badge_job.result }}
+            deploy_job: ${{ needs.deploy_job.result }}
 
 
             
