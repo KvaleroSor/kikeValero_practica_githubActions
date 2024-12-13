@@ -126,7 +126,7 @@ jobs:
 
         # Step 2
         - name: Enviar email notificant
-          uses: ./.github/actions/notificacio_job
+          uses: ./.github/actions/notificacio_job/src
           with:
             destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
             linter_job: ${{ needs.linter_job.result }}
