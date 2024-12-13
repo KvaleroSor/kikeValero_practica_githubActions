@@ -1,0 +1,152 @@
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+
+jobs:
+    linter_job:
+        runs-on: ubuntu-latest
+        steps:
+          # Step 1.
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          # Step 2.
+          - name: Instalar dependències
+            run: npm install 
+    
+          # Step 3.
+          - name: Corren linter
+            run: npm run lint
+            continue-on-error: true
+              
+    cypress_job:
+        runs-on: ubuntu-latest
+        needs:
+            - linter_job
+
+        steps:
+          # Step 1.
+          - name: Checkout code
+            uses: actions/checkout@v4                
+
+          # Step 2.          
+          - name: Correr cypress
+            uses: cypress-io/github-action@v6
+            with:
+              build: npm run build
+              start: npm start
+              wait-on: "http://localhost:3000"
+              install: false
+            id: cypress
+            continue-on-error: true
+
+          - name: Guardar resultat
+            run: echo "${{ steps.cypress.outcome }}" > result.txt
+            continue-on-error: true
+
+          # Step 6
+          - name: Creant l´artifact
+            uses: actions/upload-artifact@v4
+            with:
+              name: result.txt
+              path: .
+            continue-on-error: true
+           
+    add_badge_job:
+        needs: cypress_job
+        runs-on: ubuntu-latest
+          
+        steps:
+          # Step 1
+          - name: Checkout code
+            uses: actions/checkout@v4
+          
+          # Step 2
+          - name: Recuperem l´artefact
+            uses: actions/download-artifact@v4
+            with:
+              name: result.txt
+          
+          # Step 3
+          - name: Settegem l´ixida
+            run: echo "::set-output name=cypress_outcome::$(cat result.txt)"
+            id: cypress_outcome
+          
+          # Step 4
+          - name: Afegim el badge del resultat del test
+            uses: ./.github/actions/resultat_test_action
+            with:
+              test_result: ${{steps.cypress_outcome.outputs.cypress_outcome}}
+          
+          # Step 5
+          - name: Commit i push dels canvits
+            uses: EndBug/add-and-commit@v9
+            with:
+              add: .
+              author_name: "Kike Valero"
+              author_email: "kvalerosor@hotmail.com"
+              message: "Resultat test badge"
+              push: true    
+    
+    # deploy_job:
+    #     needs: cypress_job
+    #     runs-on: ubuntu-latest
+    #     continue-on-error: true
+
+    #     steps:
+    #     # Step 1
+    #     - name: Checkout code
+    #       uses: actions/checkout@v4
+
+    #     # Step 2
+    #     - name: Instal·lant dependencies
+    #       run: npm install --legacy-peer-deps
+
+    #     # Step 3
+    #     - name: Construint el projecte
+    #       run: npm run build
+
+    #     - name: Instal·lar Vercel CLI 
+    #       run: npm install -g vercel@25.1.0
+      
+    #     # Step 4
+    #     - name: Desplegar en Vercel
+    #       uses: amondnet/vercel-action@v25
+    #       with:
+    #         vercel-token: ${{ secrets.VERCEL_TOKEN }} 
+    #         # github-token: ${{ secrets.GH_TOKEN }}            
+    #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
+    #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
+           
+
+    # Notification_job:
+    #   needs: [linter_job, cypress_job, add_badge_job, deploy_job]
+    #   runs-on: ubuntu-latest
+    #   if: always()
+    #   continue-on-error: true
+      
+    #   steps:
+
+    #     # Step 1
+    #     - name: Checkout code
+    #       uses: actions/checkout@v4
+
+    #     # Step 2
+    #     - name: Enviar email notificant
+    #       uses: ./.github/actions/notificacio_job
+    #       with:
+    #         destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
+    #         linter_job: ${{ needs.linter_job.result }}
+    #         cypress_job: ${{ needs.cypress_job.result }}
+    #         badge_job: ${{ needs.add_badge_job.result }}
+    #         deploy_job: ${{ needs.deploy_job.result }}
+
+
+            
+          
+    
+    

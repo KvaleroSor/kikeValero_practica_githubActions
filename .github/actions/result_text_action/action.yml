@@ -1,0 +1,9 @@
+name: resultat_test_action
+description: "Afegim un badge al readme.md amb el resultat del test"
+inputs:
+  test_result:
+    description: "Test result"
+    required: true
+runs:
+  using: "node20"
+  main: src/dist/index.js
