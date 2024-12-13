@@ -7,22 +7,27 @@ async function run() {
     try {
         const destinatari_email = core.getInput("destinatari_email"); 
         const assumpte_email = "Resultat del Workflow executat";
-        const cos_email = "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";
-        const port = core.getInput("config_port");
+        const cos_email = "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";        
         const linter_job = core.getInput("linter_job");
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
         const remitent_email = core.getInput("remitent_email");
         const remitent_password = core.getInput("remitent_password");
+        const client_id = core.getInput("client_id");
+        const client_secret = core.getInput("client_secret");
+        const refresh_token = core.getInput("refresh_token");
+        const acces_token = core.getInput("acces_token");
 
         const transporter = servicioEmail.createTransport({
-            host: 'smtp.office365.com',
-            port: port,
-            secure: false,
+            service: "gmail",            
             auth: {
                 user: remitent_email,
                 pass: remitent_password,
+                clientId: client_id,
+                clientSecret: client_secret,    
+                refreshToken: refresh_token,
+                accessToken: acces_token
             },
         });
 

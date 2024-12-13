@@ -10,9 +10,18 @@ inputs:
   remitent_password:
     description: "Contrasenya del remitent del correu"
     required: true
-  config_port: 
-    description: "Port del correu"
+  client_id:
+    description: "Client id de l'aplicació de google"
     required: true
+  client_secret:
+    description: "Client secret de l'aplicació de google"
+    required: true
+  refresh_token:  
+    description: "Refresh token de l'aplicació de google"
+    required: true
+  acces_token:
+    description: "Acces token de l'aplicació de google"
+    required: true  
   linter_job:
     description: "Resultat linter job"
     required: true
