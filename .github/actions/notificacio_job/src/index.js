@@ -12,8 +12,8 @@ async function run() {
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
-        const remitent_email = process.env.EMAIL_USER;
-        const remitent_password = process.env.EMAIL_PASSWORD;
+        const remitent_email = core.getInput("remitent_email");
+        const remitent_password = core.getInput("remitent_password");
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",

@@ -4,6 +4,12 @@ inputs:
   destinatari_email: 
     descrtiption: "Email del destinatari del correu"
     required: true
+  remitent_email: 
+    description: "Email del remitent del correu"
+    required: true
+  remitent_password:
+    description: "Contrasenya del remitent del correu"
+    required: true
   linter_job:
     description: "Resultat linter job"
     required: true
