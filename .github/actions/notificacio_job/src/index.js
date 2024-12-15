@@ -9,7 +9,7 @@ require("dotenv").config();
 
 async function run() {
     try {
-        const destinatari_email = core.getInput("destinatari_email");
+        // const destinatari_email = core.getInput("destinatari_email");
         const assumpte_email = "Resultat del Workflow executat";
         const cos_email =
             "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";
@@ -17,27 +17,27 @@ async function run() {
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
-        const remitent_email = core.getInput("remitent_email");
-        const remitent_password = core.getInput("remitent_password");
-        const client_id = core.getInput("client_id");
-        const client_secret = core.getInput("client_secret");
-        const refresh_token = core.getInput("refresh_token");    
+        const MAIL_USERNAME = core.getInput("remitent_email");
+        const MAIL_PASSWORD = core.getInput("remitent_password");
+        const OAUTH_CLIENT_ID = core.getInput("client_id");
+        const OAUTH_CLIENT_SECRET = core.getInput("client_secret");
+        const OAUTH_REFRESH_TOKEN = core.getInput("refresh_token");    
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",
             auth: {
                 type: "OAuth2",
-                user: remitent_email,
-                pass: remitent_password,
-                clientId: client_id,
-                clientSecret: client_secret,
-                refreshToken: refresh_token,                
+                user: MAIL_USERNAME,
+                pass: MAIL_PASSWORD,
+                clientId: OAUTH_CLIENT_ID,
+                clientSecret: OAUTH_CLIENT_SECRET,
+                refreshToken: OAUTH_REFRESH_TOKEN,                
             },
         });
 
         const email_options = {
-            from: remitent_email,
-            to: destinatari_email,
+            from: 'kikevalero284@gmail.com',
+            to: 'kikevalero284@gmail.com',
             subject: assumpte_email,
             text: cos_email + `\n
             - Linter job --> ${linter_job}\n,

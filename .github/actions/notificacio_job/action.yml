@@ -1,27 +1,21 @@
 name: notificacion_job
 description: "Notificar el resultat del test via email"
 inputs:
-  destinatari_email: 
-    descrtiption: "Email del destinatari del correu"
-    required: true
-  remitent_email: 
+  MAIL_USERNAME: 
     description: "Email del remitent del correu"
     required: true
-  remitent_password:
+  MAIL_PASSWORD:
     description: "Contrasenya del remitent del correu"
     required: true
-  client_id:
+  OAUTH_CLIENT_ID:
     description: "Client id de l'aplicació de google"
     required: true
-  client_secret:
+  OAUTH_CLIENT_SECRET:
     description: "Client secret de l'aplicació de google"
     required: true
-  refresh_token:  
+  OAUTH_REFRESH_TOKEN:  
     description: "Refresh token de l'aplicació de google"
     required: true
-  # acces_token:
-  #   description: "Acces token de l'aplicació de google"
-  #   required: true  
   linter_job:
     description: "Resultat linter job"
     required: true
