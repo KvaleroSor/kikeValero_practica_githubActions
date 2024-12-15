@@ -228,11 +228,25 @@ farem executar l´acció "amondnet/vercel-action@v25" la qual necessita que li p
 - Argument:
 
     - vercel-args (--prod).
+        
         + Especifiquem que volem que el projecte es desplegue en producció.
 
 ##### En cas de no tindre Vercel instal·lat:
 
 ![Process d´instal·lació de vercel i desplegament del projecte](./img/5.%20desplegant%20en%20vercel.png)
+
+##### Pasos que hem executat per instal·lar Vercel i desplegar el projecte a la seua plataforma:
+
+- Pasos a seguir.
+
+    1. npm install -g vercel
+    2. vercel login.
+        1. Fem el login amb el conter de github.
+    3. Executem "vercel". (Seguim els passos de l´instal·lador).
+
+Una vegada executem el comando "vercel", seguimt els passos de l´instal·lador vorem com l´últim pas es desplega el projecte a la plataforma de vercel de forma exitosa.
+
+Una vegada fet tot este proces sens crearà l´arxiu ".vercel.json" d´on podrem obtenir les variables d´entorn necessaries en el punt anterior.
 
 #### Notification Job.
 
