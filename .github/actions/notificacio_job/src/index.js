@@ -1,7 +1,10 @@
+const express = require("express");
 const core = require("@actions/core");
-// const github = require("@actions/github");
-const {google} = require("googleapis");
+
 const servicioEmail = require("nodemailer");
+const app = express();
+const port = 3500;
+
 require("dotenv").config();
 
 async function run() {
@@ -15,31 +18,20 @@ async function run() {
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
         const remitent_email = core.getInput("remitent_email");
-        // const remitent_password = core.getInput("remitent_password");
+        const remitent_password = core.getInput("remitent_password");
         const client_id = core.getInput("client_id");
         const client_secret = core.getInput("client_secret");
-        const refresh_token = core.getInput("refresh_token");
-        // const acces_token = core.getInput("acces_token");
-
-        const OAuth2 = google.auth.OAuth2;
-        const oauth2Client = new OAuth2(
-            client_id,
-            client_secret,
-            "https://developers.google.com/oauthplayground"
-        );
-        
-        oauth2Client.setCredentials({ refresh_token: refresh_token }); // Obtenemos el accessToken usando el refreshToken const accessToken = await oauth2Client.getAccessToken();
-        const accessToken = await oauth2Client.getAccessToken();
+        const refresh_token = core.getInput("refresh_token");    
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",
             auth: {
                 type: "OAuth2",
                 user: remitent_email,
+                pass: remitent_password,
                 clientId: client_id,
                 clientSecret: client_secret,
-                refreshToken: refresh_token,
-                accessToken: accessToken.token,
+                refreshToken: refresh_token,                
             },
         });
 
@@ -67,3 +59,7 @@ async function run() {
 }
 
 run();
+
+app.listen(port, () => {
+    console.log(`Nodemailer escoltant al port ${port}`);
+});

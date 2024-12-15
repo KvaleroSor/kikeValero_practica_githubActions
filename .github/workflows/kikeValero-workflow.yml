@@ -128,13 +128,12 @@ jobs:
         - name: Enviar email notificant
           uses: ./.github/actions/notificacio_job
           with:
-            destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
             remitent_email: ${{ secrets.REMITENT_EMAIL }}
-            # remitent_password: ${{ secrets.REMITENT_PASSWORD }}
+            remitent_password: ${{ secrets.REMITENT_PASSWORD }}
+            destinatari_email: ${{ secrets.DESTINATARI_EMAIL }}
             client_id: ${{ secrets.CLIENT_ID }}
             client_secret: ${{ secrets.CLIENT_SECRET }}
-            refresh_token: ${{ secrets.REFRESH_TOKEN }}
-            # acces_token: ${{ secrets.ACCES_TOKEN }}            
+            refresh_token: ${{ secrets.REFRESH_TOKEN }}                   
             linter_job: ${{ needs.linter_job.result }}
             cypress_job: ${{ needs.cypress_job.result }}
             badge_job: ${{ needs.add_badge_job.result }}
