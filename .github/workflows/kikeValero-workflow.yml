@@ -39,16 +39,16 @@ jobs:
             with:
               build: npm run build
               start: npm start
-              wait-on: "http://localhost:3000"
-            #   install: false
+              wait-on: "http://localhost:3000"            
             id: cypress
             continue-on-error: true
 
+          # Step 3
           - name: Guardar resultat
             run: echo "${{ steps.cypress.outcome }}" > result.txt
             continue-on-error: true
 
-          # Step 6
+          # Step 4
           - name: Creant l´artifact
             uses: actions/upload-artifact@v4
             with:

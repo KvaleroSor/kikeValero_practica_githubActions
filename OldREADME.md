@@ -75,7 +75,7 @@ arxiu .yml.
 3. Una vegada "checkejat" el còdig instal·lar-hem les dependències necessaries.
 4. Executar-hem el linter per vore que tot el còdig complix amb els requisits.
 
-##### Resultat del linter.
+##### Resultat del linter:
 
 ![Resultat linter](./img/2.%20resultat%20linter-cypress%20fallit%20no%20corregit%20errors.png)
 
@@ -86,15 +86,45 @@ del nostre projecte, en concret:
 - Errata de definició de variables.
 - Errata d´ordre a l´estructura d´un switch.
 
-Errates: 
+##### Errates: 
 
 ![Errates linter](./img/3.%20indicant%20errors%20detectats%20per%20linter.png)
 
-Solucionant els problemes
+##### Solucionant els problemes:
 
 ![Solucionant errates linter](./img/4.%20errors%20corregits.png)
 
 #### Cypress Job.
+
+##### En la següent imatge podem veure el job Cypress_job i per el que està compost:
+
+![Cypress_job](./img/cypress.png)
+
+###### El que puguem trobar en aquest job en diferencia al "Linter_job" és: 
+
+- Needs: Esta instrucció farà que el "Cypress_job" s´espere a que el "Linter_job" acabe la seua execució.
+
+###### Step 2:
+
+S´encarregarà de fer correr els tests de Cypress.
+
+- Build: Executa el comando per construir l´aplicació.
+- Start: Iniciarà l´aplicació. 
+- Wait-on: Esperarà fins que l´aplicació estiga disponible a la direcció que hem ficat al workflow.
+- Id: Assignem un identificador a aquest step. 
+
+###### Step 3:
+
+S´encarregarà de guardar el resultat dels tests de Cypress a un arxiu (que si no existeix el crearà) anomenat "result.txt".
+
+- Run: Escriu el resultat del pas identificat anteriorment.
+
+###### Step 4:
+
+S´encarregarà de pujar l´arxiu "result.txt" com artejacte del job.
+
+- Path: L´ubicació on allotjarà l´artefacte pujat.
+
 #### Badged Job.
 #### Deploy Job.
 #### Notification Job.
