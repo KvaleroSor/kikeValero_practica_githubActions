@@ -37,8 +37,8 @@ async function run() {
             service: "gmail",
             auth: {
                 type: "OAuth2",
-                user: MAIL_USERNAME,
-                pass: 132355,
+                user: MAIL_PASSWORD,
+                pass: MAIL_PASSWORD,
                 clientId: OAUTH_CLIENT_ID,
                 clientSecret: OAUTH_CLIENT_SECRET,
                 refreshToken: OAUTH_REFRESH_TOKEN                             
