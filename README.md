@@ -48,16 +48,32 @@ En una GitHub Action podem encontrar:
 
 ### Crear un Workflow amb els següents jobs.
 
-#### Primeres instruccións per al nostre Workflow.
+#### Primeres instruccions per al nostre Workflow.
 
 - Push: Estem diguent-li al nostre workflow que s´haura d´executar quan l´usuari faça un push.
 - Branches: Este push que llançarà aquest workflow serà a la branca "main".
+- Premissions | Contents | write: Estes instruccions li donen permissos d´escritura al nostre 
+arxiu .yml. 
 
 ![Primeres instruccions](./img/inici%20workflow.png)
 
 #### Linter Job.
 
+En la següent imatge podem veure el job Linter_job i per el que està compost:
 
+![Linter job](./img/linterjob.png)
+
+- Runs-on: Runner on volem que correga, en este cas "ubuntu-latest".
+- Name: Nom de l´step.
+- Uses: Acció que va a utilitzar el nostre step.
+- Continue-on-error: Açò farà que el nostre fluxe de treball no s´ature a pessar de que hi haja algún error.
+
+Desglosament del job:
+
+1. Primer correm el runner.
+2. El primer step s´encarregara de "checkejar" el còdig.
+3. Una vegada "checkejat" el còdig instal·lar-hem les dependències necessaries.
+4. Executar-hem el linter per vore que tot el còdig complix amb els requisits.
 
 #### Cypress Job.
 #### Badged Job.
