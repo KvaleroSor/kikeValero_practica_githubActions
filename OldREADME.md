@@ -202,6 +202,10 @@ arxiu i junt al missatge comentat anteriorment, més l´insignia ho afegirem tot
 En aquest step el que farem serà utilitzant l´acció "EndBug/add-and-commit@v9" farem un commit
 i push dels canvits realitzats als nostres arxius.
 
+##### Conclusió.
+
+La tasca d´aquest job és recuperar l´artefacte creat en el job anterior, modificar el arxiu readme principal del repositori i fer un commit i push dels arxius modificats al repositori.
+
 #### Deploy Job.
 
 ##### En la següent imatge podem veure el job deploy_job i per el que està compost:
@@ -244,13 +248,61 @@ farem executar l´acció "amondnet/vercel-action@v25" la qual necessita que li p
         1. Fem el login amb el conter de github.
     3. Executem "vercel". (Seguim els passos de l´instal·lador).
 
-Una vegada executem el comando "vercel", seguimt els passos de l´instal·lador vorem com l´últim pas es desplega el projecte a la plataforma de vercel de forma exitosa.
+Una vegada executem el comando "vercel", seguimt els passos de l´instal·lador i vorem com l´últim pas és desplega el projecte a la plataforma de vercel de forma exitosa.
 
-Una vegada fet tot este proces sens crearà l´arxiu ".vercel.json" d´on podrem obtenir les variables d´entorn necessaries en el punt anterior.
+Una vegada fet tot este proces, sens crearà l´arxiu ".vercel.json" d´on podrem obtenir les variables d´entorn necessaries anomenades en el punt anterior.
+
+##### Conclusió.
+
+Aquest job va a encarregar-se de desplegar el còdig per a que puga ser accessible desde la següent 
+URL: https://kike-valero-practica-github-actions.vercel.app/
+
+![pagina desplegada a vercel](./img/pagina%20desplegada.png)
 
 #### Notification Job.
 
+##### En la següent imatge podem veure el job deploy_job i per el que està compost:
 
+![notification_job](./img/notification_job.png)
+
+La primera tasca que realitza aquest job es esperar a que finalitzen la resta dels altres jobs:
+
+- Linter_job.
+- Cypress_job.
+- Add_badge_job.
+- Deploy_job.
+
+En aquest job podem veure en diferencia dels altes jobs que tinguem l´instrucció: 
+
+- if: always()
+
+Aquesta instrucció significa que a pesar del resultat dels altres jobs aquest job s´executarà si o si, no hi ha res que impedixca que aquest job s´execute, també ens va bé perquè rebrem notificació al correu passe el que passe a la nostra github action, tant si va bé com si va mal, i en cas de que qualsevol cosa no haja anat com s´esperava poder adonar-se a temps per executar alguna alternativa.
+
+##### Step 2:
+
+L´Step 2 executarà una action personalitzada, la qual s´encarregarà de enviar un mail al correu que nosaltres indiquem per notificar del resultat de tots els jobs executats anteriorment.
+
+##### Imatge de l´acció.
+
+![action notification job](./img/action%20notification%20job.png)
+
+- Explicació de l´acció:
+
+    - En aquesta acció puguem vore que hi han moltes variables que s´han de passar com a inputs per al correcte funcionament del script que hem definit, el qual serà el encarregat de fer la tasca d´enviar el correu electrònic al usuari que nosaltres decidim.
+
+##### Imatge de l´script.
+
+![Script notification job](./img/script%20notification%20job.png)
+![Script notification job](./img/script%20notification%20job%202.png)
+
+- Explicació de l´script: 
+
+    - Funció encarregada d´enviar un correu a l´usuari passe el que passe a la nostra github action. Aquest script és el que arreplega les dades dels "secrests" de github i les utilitza per conectar-se al servici "nodemailer",
+    encarregat de gestionar eixes dades i enviar el correu amb destinatari, assumpte, cos del missatge que nosaltres definim.
+
+##### Imatge del missatge rebut per el destinatari indicat.
+
+![missatge notification job](./img/missatge%20notification%20job.png)
 
 
     
