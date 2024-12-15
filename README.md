@@ -102,7 +102,7 @@ del nostre projecte, en concret:
 
 ![Cypress_job](./img/cypress.png)
 
-###### El que puguem trobar en aquest job en diferencia al "Linter_job" és: 
+##### El que puguem trobar en aquest job en diferencia al "Linter_job" és: 
 
 - Needs: Esta instrucció farà que el "Cypress_job" s´espere a que el "Linter_job" acabe la seua execució.
 
