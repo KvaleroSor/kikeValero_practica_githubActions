@@ -17,11 +17,11 @@ async function run() {
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
-        const MAIL_USERNAME = core.getInput("remitent_email");
-        const MAIL_PASSWORD = core.getInput("remitent_password");
-        const OAUTH_CLIENT_ID = core.getInput("client_id");
-        const OAUTH_CLIENT_SECRET = core.getInput("client_secret");
-        const OAUTH_REFRESH_TOKEN = core.getInput("refresh_token");    
+        const MAIL_USERNAME = core.getInput("MAIL_USERNAME");
+        const MAIL_PASSWORD = core.getInput("MAIL_PASSWORD");
+        const OAUTH_CLIENT_ID = core.getInput("OAUTH_CLIENT_ID");
+        const OAUTH_CLIENT_SECRET = core.getInput("OAUTH_CLIENT_SECRET");
+        const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN");    
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",
