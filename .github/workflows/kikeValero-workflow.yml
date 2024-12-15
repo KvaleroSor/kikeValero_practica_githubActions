@@ -92,56 +92,56 @@ jobs:
               message: "Resultat test badge"
               push: true    
     
-    # deploy_job:
-    #     needs: cypress_job
-    #     runs-on: ubuntu-latest
-    #     continue-on-error: true
+    deploy_job:
+        needs: cypress_job
+        runs-on: ubuntu-latest
+        continue-on-error: true
 
-    #     steps:
-    #     # Step 1
-    #     - name: Checkout code
-    #       uses: actions/checkout@v4
+        steps:
+        # Step 1
+        - name: Checkout code
+          uses: actions/checkout@v4
       
-    #     # Step 2
-    #     - name: Desplegar en Vercel
-    #       uses: amondnet/vercel-action@v25
-    #       with:
-    #         vercel-token: ${{ secrets.VERCEL_TOKEN }} 
-    #         vercel-args: "--prod"  
-    #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
-    #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
+        # Step 2
+        - name: Desplegar en Vercel
+          uses: amondnet/vercel-action@v25
+          with:
+            vercel-token: ${{ secrets.VERCEL_TOKEN }} 
+            vercel-args: "--prod"  
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} 
            
 
-    # Notification_job:
-    #   needs: 
-    #     - linter_job
-    #     - cypress_job
-    #     - add_badge_job
-    #     - deploy_job
+    Notification_job:
+      needs: 
+        - linter_job
+        - cypress_job
+        - add_badge_job
+        - deploy_job
         
-    #   runs-on: ubuntu-latest
-    #   if: always()
-    #   continue-on-error: true
+      runs-on: ubuntu-latest
+      if: always()
+      continue-on-error: true
       
-    #   steps:
+      steps:
 
-    #     # Step 1
-    #     - name: Checkout code
-    #       uses: actions/checkout@v4
+        # Step 1
+        - name: Checkout code
+          uses: actions/checkout@v4
 
-    #     # Step 2
-    #     - name: Enviar email notificant
-    #       uses: ./.github/actions/notificacio_job
-    #       with:
-    #         MAIL_USERNAME: ${{ secrets.REMITENT_EMAIL }}
-    #         MAIL_PASSWORD: ${{ secrets.REMITENT_PASSWORD }}            
-    #         OAUTH_CLIENT_ID: ${{ secrets.CLIENT_ID }}
-    #         OAUTH_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-    #         OAUTH_REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}                   
-    #         linter_job: ${{ needs.linter_job.result }}
-    #         cypress_job: ${{ needs.cypress_job.result }}
-    #         badge_job: ${{ needs.add_badge_job.result }}
-    #         deploy_job: ${{ needs.deploy_job.result }}
+        # Step 2
+        - name: Enviar email notificant
+          uses: ./.github/actions/notificacio_job
+          with:
+            MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}            
+            OAUTH_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+            OAUTH_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+            OAUTH_REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}                   
+            linter_job: ${{ needs.linter_job.result }}
+            cypress_job: ${{ needs.cypress_job.result }}
+            badge_job: ${{ needs.add_badge_job.result }}
+            deploy_job: ${{ needs.deploy_job.result }}
 
 
             
