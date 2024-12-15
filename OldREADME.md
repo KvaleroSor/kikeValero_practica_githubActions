@@ -169,15 +169,15 @@ En aquest step el que fem és fer us d´una acció personalitzada.
 
 ![Action yml](./img/accio%20commit.png)
 
-Explicació de l´acció: 
+- Explicació de l´acció: 
 
-- Name: Nom de l´acció.
-- Description: Una breu descripció del que s´encarrega de fer l´acció.
-- Inputs: Paràmetre d´entrada que rep l´acció.
-- Test_result: Nom del paràmetre d´entrada.
-- Required: Indica que el paràmetre que hem escrit abans s´ha de passar de forma "requerida" quan construim el job al
-workflow.
-- Runs: Conte dos paràmetres:
+    - Name: Nom de l´acció.
+    - Description: Una breu descripció del que s´encarrega de fer l´acció.
+    - Inputs: Paràmetre d´entrada que rep l´acció.
+    - Test_result: Nom del paràmetre d´entrada.
+    - Required: Indica que el paràmetre que hem escrit abans s´ha de passar de forma "requerida" quan construim el job al
+      workflow.
+    - Runs: Conte dos paràmetres:
 
     1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
     2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
