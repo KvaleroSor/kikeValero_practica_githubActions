@@ -179,8 +179,8 @@ En aquest step el que fem és fer us d´una acció personalitzada.
       workflow.
     - Runs: Conte dos paràmetres:
 
-    1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
-    2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
+        - Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
+        - Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
 
 ###### Arxiu index.js (Arxiu que contè el còdig a executar).
 
