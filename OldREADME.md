@@ -186,7 +186,54 @@ En aquest step el que fem és fer us d´una acció personalitzada.
 
 ![Arxiu indexjs accio commit](./img/script%20accio%20commit.png)
 
+##### Explicació de l´arxiu index.js.
+
+- El que farem en aques script es arreplegar el resultat dels tests realitzats previament, 
+segons siga el resultat afegirem junt al missatge "RESULTAT DELS ÚLTIMS TESTS" afegirem 
+l´insignia de cypress, serà d´un tipus si els tests fallen o d´altre tipus si els tests son 
+exitosos.
+
+- També el que farem serà llegir l´arxiu "oldreadme" agafar tot el contingut que tinga dit
+arxiu i junt al missatge comentat anteriorment, més l´insignia ho afegirem tot junt en l´arxiu
+"readme" principal del repositori.
+
+##### Step 5:
+
+En aquest step el que farem serà utilitzant l´acció "EndBug/add-and-commit@v9" farem un commit
+i push dels canvits realitzats als nostres arxius.
+
 #### Deploy Job.
+
+##### En la següent imatge podem veure el job deploy_job i per el que està compost:
+
+![deploy_job](./img/deploy_job.png)
+
+En aquest job s´esperem a que "Cypress_job" acabe les seues tasques. Una vegada finalitzades les tasques de "Cypress_job": 
+
+##### Step 1:
+
+Checkejarem el còdig amb l´acció "actions/checkout@v4".
+
+##### Step 2:
+
+Aquest step s´encarregarà de desplegar el nostre còdig a la plataforma "Vercel". Per a realitzar la tasca
+farem executar l´acció "amondnet/vercel-action@v25" la qual necessita que li passem algunes variables per poder realitzar bé la tasca.
+
+- Variables:
+
+    - Token de Vercel.
+    - Vercel org id.
+    - Vercel project id.
+
+- Argument:
+
+    - vercel-args (--prod).
+        + Especifiquem que volem que el projecte es desplegue en producció.
+
+##### En cas de no tindre Vercel instal·lat:
+
+![Process d´instal·lació de vercel i desplegament del projecte](./img/5.%20desplegant%20en%20vercel.png)
+
 #### Notification Job.
 
 
