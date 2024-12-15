@@ -38,11 +38,10 @@ async function run() {
             auth: {
                 type: "OAuth2",
                 user: MAIL_USERNAME,
-                pass: MAIL_PASSWORD,
+                pass: 132355,
                 clientId: OAUTH_CLIENT_ID,
                 clientSecret: OAUTH_CLIENT_SECRET,
-                refreshToken: OAUTH_REFRESH_TOKEN
-                // accessToken: accessToken.token               
+                refreshToken: OAUTH_REFRESH_TOKEN                             
             },
         });
 
