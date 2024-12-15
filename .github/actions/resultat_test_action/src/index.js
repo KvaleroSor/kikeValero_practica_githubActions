@@ -19,7 +19,7 @@ async function main() {
 
         const oldReadmePath = './OldREADME.md';
         let oldReadmeContent = await fs.readFile(oldReadmePath, 'utf-8');
-        let newReadmeContent = oldReadmeContent + "\n" + missatge_badge;
+        let newReadmeContent = missatge_badge + "\n" + oldReadmeContent;
         const readmePath = './README.md';
         await fs.writeFile(readmePath, newReadmeContent);
 

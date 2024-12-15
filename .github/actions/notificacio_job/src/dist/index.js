@@ -61589,14 +61589,6 @@ function vary (res, field) {
 
 /***/ }),
 
-/***/ 3871:
-/***/ ((module) => {
-
-module.exports = eval("require")("googleapis");
-
-
-/***/ }),
-
 /***/ 2613:
 /***/ ((module) => {
 
@@ -63643,7 +63635,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"100":"Continue","101":"Switching Pro
 var __webpack_exports__ = {};
 const express = __nccwpck_require__(5152);
 const core = __nccwpck_require__(7484);
-const { google } = __nccwpck_require__(3871);
+// const { google } = require("googleapis");
 
 const servicioEmail = __nccwpck_require__(3621);
 const app = express();
@@ -63652,8 +63644,7 @@ const port = 3500;
 (__nccwpck_require__(8889).config)();
 
 async function run() {
-    try {
-        // const destinatari_email = core.getInput("destinatari_email");
+    try {       
         const assumpte_email = "Resultat del Workflow executat";
         const cos_email =
             "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";
@@ -63667,15 +63658,15 @@ async function run() {
         const OAUTH_CLIENT_SECRET = core.getInput("OAUTH_CLIENT_SECRET");
         const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN"); 
         
-        const OAuth2 = google.auth.OAuth2; 
-        const oauth2Client = new OAuth2( 
-            OAUTH_CLIENT_ID, 
-            OAUTH_CLIENT_SECRET, 
-            "https://developers.google.com/oauthplayground" );
+        // const OAuth2 = google.auth.OAuth2; 
+        // const oauth2Client = new OAuth2( 
+        //     OAUTH_CLIENT_ID, 
+        //     OAUTH_CLIENT_SECRET, 
+        //     "https://developers.google.com/oauthplayground" );
 
-        oauth2Client.setCredentials({ refreshToken: OAUTH_REFRESH_TOKEN }); 
+        // oauth2Client.setCredentials({ refreshToken: OAUTH_REFRESH_TOKEN }); 
     
-        const accessToken = await oauth2Client.getAccessToken();
+        // const accessToken = await oauth2Client.getAccessToken();
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",
@@ -63685,8 +63676,8 @@ async function run() {
                 pass: MAIL_PASSWORD,
                 clientId: OAUTH_CLIENT_ID,
                 clientSecret: OAUTH_CLIENT_SECRET,
-                refreshToken: OAUTH_REFRESH_TOKEN,
-                accessToken: accessToken.token               
+                refreshToken: OAUTH_REFRESH_TOKEN
+                // accessToken: accessToken.token               
             },
         });
 
@@ -63706,6 +63697,7 @@ async function run() {
                 console.log(error);
             } else {
                 console.log("Email sent: " + info.response);
+                process.exit(0);
             }
         });
     } catch (error) {
