@@ -1,5 +1,7 @@
 RESULTAT DELS ÚLTIMS TESTS 
  ![Test result badge](https://img.shields.io/badge/test-failure-red)
+User -> Kike Valero - Modificacions OldREADME
+
 # GITHUB ACTIONS
 
 ### ¿Què son las GitHub Actions?
@@ -17,30 +19,30 @@ Les GitHub Actions son una plataforma d´integració i desplegament continuo. (C
 
 En una GitHub Action podem encontrar: 
 
-    - Workflows.
-    - Jobs.
-    - Steps.
-    - Actions.
-    - Runners.
+- Workflows.
+- Jobs.
+- Steps.
+- Actions.
+- Runners.
 
-    · Workflow -> Es el procediment d´automatització què s´agrega a un repositori.
+· Workflow -> Es el procediment d´automatització què s´agrega a un repositori.
                 Pot estar compost d´un o més jobs.
                 Els seus llanzadors poden ser "push", "PR", etc.
 
-    · Jobs -> Es el conjunt de "steps" què s´executaran, estos por defecte s´executen
+· Jobs -> Es el conjunt de "steps" què s´executaran, estos por defecte s´executen
             tots en paralel, pero hi ha la possibilitat de què hi haja jobs que esperen
             a altres jobs para poder executar-se.
 
-    · Steps -> Es la tasca individual què s´executarà dintre d´un job.
+· Steps -> Es la tasca individual què s´executarà dintre d´un job.
 
                Tipus: 
 
                 + Actions.
                 + Scripts (personalitzats).
                
-    · Actions -> Son las execucions independents que juntes formen un "Step".
+· Actions -> Son las execucions independents que juntes formen un "Step".
 
-    · Runners -> Es el servidor que te instal·lada l´aplicació d´execució.
+· Runners -> Es el servidor que te instal·lada l´aplicació d´execució.
 
 ---
 
@@ -59,7 +61,7 @@ arxiu .yml.
 
 #### Linter Job.
 
-En la següent imatge podem veure el job Linter_job i per el que està compost:
+##### En la següent imatge podem veure el job Linter_job i per el que està compost:
 
 ![Linter job](./img/linterjob.png)
 
@@ -68,12 +70,31 @@ En la següent imatge podem veure el job Linter_job i per el que està compost:
 - Uses: Acció que va a utilitzar el nostre step.
 - Continue-on-error: Açò farà que el nostre fluxe de treball no s´ature a pessar de que hi haja algún error.
 
-Desglosament del job:
+##### Desglosament del job:
 
 1. Primer correm el runner.
 2. El primer step s´encarregara de "checkejar" el còdig.
 3. Una vegada "checkejat" el còdig instal·lar-hem les dependències necessaries.
 4. Executar-hem el linter per vore que tot el còdig complix amb els requisits.
+
+##### Resultat del linter.
+
+![Resultat linter](./img/2.%20resultat%20linter-cypress%20fallit%20no%20corregit%20errors.png)
+
+Com podem veure a la foto el nostre linter ha detectat errates que no complixem amb les especificacions generals
+del nostre projecte, en concret: 
+
+- Errata de comilles.
+- Errata de definició de variables.
+- Errata d´ordre a l´estructura d´un switch.
+
+Errates: 
+
+![Errates linter](./img/3.%20indicant%20errors%20detectats%20per%20linter.png)
+
+Solucionant els problemes
+
+![Solucionant errates linter](./img/4.%20errors%20corregits.png)
 
 #### Cypress Job.
 #### Badged Job.
