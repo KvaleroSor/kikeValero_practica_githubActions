@@ -57,13 +57,14 @@ arxiu .yml.
 
 #### Linter Job.
 
-En la següent imagtge podem veure el job Linter_job i per el que està compost:
+En la següent imatge podem veure el job Linter_job i per el que està compost:
+
+![Linter job](./img/linterjob.png)
 
 - Runs-on: Runner on volem que correga, en este cas "ubuntu-latest".
-- Steps:
-* Name: Nom de l´step.
-* Uses: Acció que va a utilitzar el nostre step.
-* Continue-on-error: Açò farà que el nostre fluxe de treball no s´ature a pessar de que hi haja algún error.
+- Name: Nom de l´step.
+- Uses: Acció que va a utilitzar el nostre step.
+- Continue-on-error: Açò farà que el nostre fluxe de treball no s´ature a pessar de que hi haja algún error.
 
 Desglosament del job:
 
