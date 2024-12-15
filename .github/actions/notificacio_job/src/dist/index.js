@@ -63645,6 +63645,12 @@ const port = 3500;
 
 async function run() {
     try {       
+        
+        const MAIL_USERNAME = core.getInput("MAIL_USERNAME");
+        const MAIL_PASSWORD = core.getInput("MAIL_PASSWORD");
+        const OAUTH_CLIENT_ID = core.getInput("OAUTH_CLIENT_ID");
+        const OAUTH_CLIENT_SECRET = core.getInput("OAUTH_CLIENT_SECRET");
+        const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN"); 
         const assumpte_email = "Resultat del Workflow executat";
         const cos_email =
             "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";
@@ -63652,11 +63658,6 @@ async function run() {
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
-        const MAIL_USERNAME = core.getInput("MAIL_USERNAME");
-        const MAIL_PASSWORD = core.getInput("MAIL_PASSWORD");
-        const OAUTH_CLIENT_ID = core.getInput("OAUTH_CLIENT_ID");
-        const OAUTH_CLIENT_SECRET = core.getInput("OAUTH_CLIENT_SECRET");
-        const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN"); 
         
         // const OAuth2 = google.auth.OAuth2; 
         // const oauth2Client = new OAuth2( 
@@ -63672,7 +63673,7 @@ async function run() {
             service: "gmail",
             auth: {
                 type: "OAuth2",
-                user: MAIL_PASSWORD,
+                user: MAIL_USERNAME,
                 pass: MAIL_PASSWORD,
                 clientId: OAUTH_CLIENT_ID,
                 clientSecret: OAUTH_CLIENT_SECRET,
@@ -63681,7 +63682,7 @@ async function run() {
         });
 
         const email_options = {
-            from: 'kikevalero284@gmail.com',
+            from: 'kikevalerosoriano@gmail.com',
             to: 'kikevalero284@gmail.com',
             subject: assumpte_email,
             text: cos_email + `\n
