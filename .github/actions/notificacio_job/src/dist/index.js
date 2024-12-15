@@ -63658,21 +63658,11 @@ async function run() {
         const cypress_job = core.getInput("cypress_job");
         const badge_job = core.getInput("badge_job");
         const deploy_job = core.getInput("deploy_job");
-        
-        // const OAuth2 = google.auth.OAuth2; 
-        // const oauth2Client = new OAuth2( 
-        //     OAUTH_CLIENT_ID, 
-        //     OAUTH_CLIENT_SECRET, 
-        //     "https://developers.google.com/oauthplayground" );
-
-        // oauth2Client.setCredentials({ refreshToken: OAUTH_REFRESH_TOKEN }); 
-    
-        // const accessToken = await oauth2Client.getAccessToken();
 
         const transporter = servicioEmail.createTransport({
-            service: "gmail",
+            service: 'gmail',
             auth: {
-                type: "OAuth2",
+                type: 'OAuth2',
                 user: MAIL_USERNAME,
                 pass: MAIL_PASSWORD,
                 clientId: OAUTH_CLIENT_ID,
@@ -63682,7 +63672,7 @@ async function run() {
         });
 
         const email_options = {
-            from: 'kikevalerosoriano@gmail.com',
+            from: 'kikevalero284@gmail.com',
             to: 'kikevalero284@gmail.com',
             subject: assumpte_email,
             text: cos_email + `\n
