@@ -23,24 +23,24 @@ En una GitHub Action podem encontrar:
 - Actions.
 - Runners.
 
-· Workflow -> Es el procediment d´automatització què s´agrega a un repositori.
+- Workflow -> Es el procediment d´automatització què s´agrega a un repositori.
                 Pot estar compost d´un o més jobs.
                 Els seus llanzadors poden ser "push", "PR", etc.
 
-· Jobs -> Es el conjunt de "steps" què s´executaran, estos por defecte s´executen
+- Jobs -> Es el conjunt de "steps" què s´executaran, estos por defecte s´executen
             tots en paralel, pero hi ha la possibilitat de què hi haja jobs que esperen
             a altres jobs para poder executar-se.
 
-· Steps -> Es la tasca individual què s´executarà dintre d´un job.
+- Steps -> Es la tasca individual què s´executarà dintre d´un job.
 
-               Tipus: 
+    Tipus: 
 
-                + Actions.
-                + Scripts (personalitzats).
+        + Actions.
+        + Scripts (personalitzats).
                
-· Actions -> Son las execucions independents que juntes formen un "Step".
+- Actions -> Son las execucions independents que juntes formen un "Step".
 
-· Runners -> Es el servidor que te instal·lada l´aplicació d´execució.
+- Runners -> Es el servidor que te instal·lada l´aplicació d´execució.
 
 ---
 
@@ -86,11 +86,11 @@ del nostre projecte, en concret:
 - Errata de definició de variables.
 - Errata d´ordre a l´estructura d´un switch.
 
-##### Errates: 
+##### Errates: 
 
 ![Errates linter](./img/3.%20indicant%20errors%20detectats%20per%20linter.png)
 
-##### Solucionant els problemes:
+##### Solucionant els problemes:
 
 ![Solucionant errates linter](./img/4.%20errors%20corregits.png)
 
@@ -179,8 +179,8 @@ Explicació de l´acció:
 workflow.
 - Runs: Conte dos paràmetres:
 
-1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
-2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
+    1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
+    2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
 
 #### Deploy Job.
 #### Notification Job.
