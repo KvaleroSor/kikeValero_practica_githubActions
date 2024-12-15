@@ -9,8 +9,7 @@ const port = 3500;
 require("dotenv").config();
 
 async function run() {
-    try {
-        // const destinatari_email = core.getInput("destinatari_email");
+    try {       
         const assumpte_email = "Resultat del Workflow executat";
         const cos_email =
             "S'ha realitzat un push en la branca main que ha provocat l'execució del workflow nom_repositori_workflow amb els següents resultats:\n";
