@@ -33,7 +33,7 @@ En una GitHub Action podem encontrar:
 
 - Steps -> Es la tasca individual què s´executarà dintre d´un job.
 
-    Tipus: 
+    1. Tipus: 
 
         + Actions.
         + Scripts (personalitzats).
