@@ -1,5 +1,6 @@
 const express = require("express");
 const core = require("@actions/core");
+const { google } = require("googleapis");
 
 const servicioEmail = require("nodemailer");
 const app = express();
@@ -21,7 +22,17 @@ async function run() {
         const MAIL_PASSWORD = core.getInput("MAIL_PASSWORD");
         const OAUTH_CLIENT_ID = core.getInput("OAUTH_CLIENT_ID");
         const OAUTH_CLIENT_SECRET = core.getInput("OAUTH_CLIENT_SECRET");
-        const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN");    
+        const OAUTH_REFRESH_TOKEN = core.getInput("OAUTH_REFRESH_TOKEN"); 
+        
+        const OAuth2 = google.auth.OAuth2; 
+        const oauth2Client = new OAuth2( 
+            OAUTH_CLIENT_ID, 
+            OAUTH_CLIENT_SECRET, 
+            "https://developers.google.com/oauthplayground" );
+
+        oauth2Client.setCredentials({ refreshToken: OAUTH_REFRESH_TOKEN }); 
+    
+        const accessToken = await oauth2Client.getAccessToken();
 
         const transporter = servicioEmail.createTransport({
             service: "gmail",
@@ -31,7 +42,8 @@ async function run() {
                 pass: MAIL_PASSWORD,
                 clientId: OAUTH_CLIENT_ID,
                 clientSecret: OAUTH_CLIENT_SECRET,
-                refreshToken: OAUTH_REFRESH_TOKEN,                
+                refreshToken: OAUTH_REFRESH_TOKEN,
+                accessToken: accessToken.token               
             },
         });
 
