@@ -7,9 +7,9 @@ inputs:
   remitent_email: 
     description: "Email del remitent del correu"
     required: true
-  remitent_password:
-    description: "Contrasenya del remitent del correu"
-    required: true
+  # remitent_password:
+  #   description: "Contrasenya del remitent del correu"
+  #   required: true
   client_id:
     description: "Client id de l'aplicació de google"
     required: true
@@ -19,9 +19,9 @@ inputs:
   refresh_token:  
     description: "Refresh token de l'aplicació de google"
     required: true
-  acces_token:
-    description: "Acces token de l'aplicació de google"
-    required: true  
+  # acces_token:
+  #   description: "Acces token de l'aplicació de google"
+  #   required: true  
   linter_job:
     description: "Resultat linter job"
     required: true
