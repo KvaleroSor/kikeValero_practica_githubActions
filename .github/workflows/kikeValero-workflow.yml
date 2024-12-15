@@ -113,7 +113,12 @@ jobs:
            
 
     Notification_job:
-      needs: [linter_job, cypress_job, add_badge_job, deploy_job]
+      needs: 
+        - linter_job
+        - cypress_job
+        - add_badge_job
+        - deploy_job
+        
       runs-on: ubuntu-latest
       if: always()
       continue-on-error: true
