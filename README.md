@@ -1,7 +1,5 @@
 RESULTAT DELS ÚLTIMS TESTS 
  ![Test result badge](https://img.shields.io/badge/test-failure-red)
-User -> Kike Valero - Modificacions OldREADME
-
 # GITHUB ACTIONS
 
 ### ¿Què son las GitHub Actions?
@@ -304,7 +302,4 @@ L´Step 2 executarà una action personalitzada, la qual s´encarregarà de envia
 
 ##### Imatge del missatge rebut per el destinatari indicat.
 
-![missatge notification job](./img/missatge%20notification%20job.png)
-
-
-    
+![missatge notification job](./img/missatge%20notification%20job.png) 
