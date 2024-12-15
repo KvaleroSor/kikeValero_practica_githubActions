@@ -94,6 +94,17 @@ del nostre projecte, en concret:
 
 ![Solucionant errates linter](./img/4.%20errors%20corregits.png)
 
+##### Conclusió.
+
+El linter s´encarreguará de comprobar les regles que nosaltres hem configurat en l´arxiu ".eslintrc.json" per vore que
+el còdig complix amb tots els requisits especificats, en cas contrari, el job ens ixirà com a fallit.
+
+Els errors que pot troba aquest job poden ser: 
+
+- Problemes d´estils.
+- Errors de sintaxis.
+- Problemes de qualitat.
+
 #### Cypress Job.
 
 ##### En la següent imatge podem veure el job Cypress_job i per el que està compost:
@@ -104,7 +115,7 @@ del nostre projecte, en concret:
 
 - Needs: Esta instrucció farà que el "Cypress_job" s´espere a que el "Linter_job" acabe la seua execució.
 
-###### Step 2:
+##### Step 2:
 
 S´encarregarà de fer correr els tests de Cypress.
 
@@ -113,19 +124,64 @@ S´encarregarà de fer correr els tests de Cypress.
 - Wait-on: Esperarà fins que l´aplicació estiga disponible a la direcció que hem ficat al workflow.
 - Id: Assignem un identificador a aquest step. 
 
-###### Step 3:
+##### Step 3:
 
 S´encarregarà de guardar el resultat dels tests de Cypress a un arxiu (que si no existeix el crearà) anomenat "result.txt".
 
 - Run: Escriu el resultat del pas identificat anteriorment.
 
-###### Step 4:
+##### Step 4:
 
 S´encarregarà de pujar l´arxiu "result.txt" com artejacte del job.
 
 - Path: L´ubicació on allotjarà l´artefacte pujat.
 
+##### Conclusió.
+
+Cypress és l´encarregat de fer les probes d´integració de la nostra aplicació. És molt útil per fer probes "end-to-end" en 
+aplicacions web.
+
+Cypress ens pot proporcionar informació molt valiosa sobre l´estabilitat i funcionalitat de la aplicació, a més a més també 
+ens dona un bon feedback al respecte. 
+
+- Estat dels tests --> 'Test passat | Test fallit'
+- Informació dels errors --> Informació extra de la proba que ha fallat per trazar l´error.
+
 #### Badged Job.
+
+##### En la següent imatge podem veure el job add_badged_job i per el que està compost:
+
+![Imatge badged_job](./img/badge_job.png)
+
+##### Step 2:
+
+Podem veure que a l´Step 2 recuperem l´artefacte anteriorment creat i guardat en l´arxiu "result.txt".
+
+##### Step 3:
+
+En aquest Step el que fem es llegir el contingut de l´arxiu i l´establim com a ixida.
+
+##### Step 4:
+
+En aquest step el que fem és fer us d´una acció personalitzada.
+
+###### Arxiu action.yml
+
+![Action yml](./img/accio%20commit.png)
+
+Explicació de l´acció: 
+
+- Name: Nom de l´acció.
+- Description: Una breu descripció del que s´encarrega de fer l´acció.
+- Inputs: Paràmetre d´entrada que rep l´acció.
+- Test_result: Nom del paràmetre d´entrada.
+- Required: Indica que el paràmetre que hem escrit abans s´ha de passar de forma "requerida" quan construim el job al
+workflow.
+- Runs: Conte dos paràmetres:
+
+1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
+2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
+
 #### Deploy Job.
 #### Notification Job.
 
