@@ -182,6 +182,10 @@ workflow.
     1. Using: Ens indica que utilitza una versió de "node20" per realitzar la tasca.
     2. Main: Ubicació de l´arxiu que conte el còdig que s´executarà.
 
+###### Arxiu index.js (Arxiu que contè el còdig a executar).
+
+![Arxiu indexjs accio commit](./img/script%20accio%20commit.png)
+
 #### Deploy Job.
 #### Notification Job.
 
