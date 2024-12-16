@@ -301,3 +301,20 @@ L´Step 2 executarà una action personalitzada, la qual s´encarregarà de envia
 ##### Imatge del missatge rebut per el destinatari indicat.
 
 ![missatge notification job](./img/missatge%20notification%20job.png) 
+
+---
+
+### Mètriques al Readme del repositori principal.
+
+El que hem fet en aquesta part de la tasca ha sigut modificar l´arxiu de README.md del nostre repositori principal per tal de mostrar les mètriques dels llenguatges que més hem utilitzat al nostre perfil de GitHub.
+
+A continuació mostrem un parell d´imatges: 
+
+1. Imatge del resultat de la action que ens permet mostrar les mètriques al README.md.
+
+![Imatge resultat readme principal](./img/readme%20principal.png)
+
+2. Imatge del còdig de l´action creada.
+
+![Imatge del còdig de l´action](./img/workflow%20readme%20principal.png)
+
