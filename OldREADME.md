@@ -282,7 +282,7 @@ Una vegada fet tot este proces, sens crearà l´arxiu ".vercel.json" d´on podre
 
 ##### Conclusió.
 
-Aquest job va a encarregar-se de desplegar el còdig per a que puga ser accessible desde la següent 
+Aquest job va a encarregar-se de desplegar la nostra app per a que puga ser accessible desde la següent 
 URL: https://kike-valero-practica-github-actions.vercel.app/
 
 ![pagina desplegada a vercel](./img/pagina%20desplegada.png)
