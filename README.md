@@ -136,6 +136,36 @@ S´encarregarà de pujar l´arxiu "result.txt" com artejacte del job.
 
 - Path: L´ubicació on allotjarà l´artefacte pujat.
 
+#### Diferents resultats possibles dels tests de Cypress.
+
+##### Resultat Cypress failure.
+
+![resultat cypress failure 1](./img/resultat%20jobs%20incorrectes%20cypress.png)
+
+- En aquesta imatge puguem vore com sols hem passat un dels tests que realitza cypress.
+
+![resultat cypress failure 2](./img/resultat%20cypress%20fail.png)
+
+- En aquesta imatge es pot comprobar com modifiquem el README.md per mostrar els tests de cypress fallits.
+
+![resultat cypress failure 3](./img/resultat%20cypress%20resulttxt%20failure.png)
+
+- En aquesta imatge el que pugem vore es com hem modificat l´arxiu result.txt amb el resultat dels tests cypress realitzats.
+
+##### Resultat Cypress succes.
+
+![resultat cypress success 1](./img/resultat%20tots%20els%20jobs%20correctes.png)
+
+- En aquesta imatge puguem vore com hem passat tots els tests que realitza cypress.
+
+![resultat cypress success 2](./img/resultat%20cypress%20ok.png)
+
+- En aquesta imatge es pot comprobar com modifiquem el README.md per mostrar els tests de cypress success.
+
+![resultat cypress success 3](./img/resultat%20cypress%20resulttxt%20succes.png)
+
+- En aquesta imatge el que pugem vore es com hem modificat l´arxiu result.txt amb el resultat dels tests cypress realitzats.
+
 ##### Conclusió.
 
 Cypress és l´encarregat de fer les probes d´integració de la nostra aplicació. És molt útil per fer probes "end-to-end" en 
