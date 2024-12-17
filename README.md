@@ -250,7 +250,7 @@ Checkejarem el còdig amb l´acció "actions/checkout@v4".
 
 ##### Step 2:
 
-Aquest step s´encarregarà de desplegar el nostre còdig a la plataforma "Vercel". Per a realitzar la tasca
+Aquest step s´encarregarà de desplegar la nostra app a la plataforma "Vercel". Per a realitzar la tasca
 farem executar l´acció "amondnet/vercel-action@v25" la qual necessita que li passem algunes variables per poder realitzar bé la tasca.
 
 - Variables:
@@ -327,7 +327,7 @@ L´Step 2 executarà una action personalitzada, la qual s´encarregarà de envia
 
 - Explicació de l´script: 
 
-    - Funció encarregada d´enviar un correu a l´usuari passe el que passe a la nostra github action. Aquest script és el que arreplega les dades dels "secrests" de github i les utilitza per conectar-se al servici "nodemailer",
+    - Script encarregat d´enviar un correu a l´usuari passe el que passe a la nostra github action. Aquest script és el que arreplega les dades dels "secrests" de github i les utilitza per conectar-se al servici "nodemailer",
     encarregat de gestionar eixes dades i enviar el correu amb destinatari, assumpte, cos del missatge que nosaltres definim.
 
 ##### Imatge del missatge rebut per el destinatari indicat.
